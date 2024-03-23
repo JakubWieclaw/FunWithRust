@@ -1,0 +1,2 @@
+    Checking test_lab2_crypto v0.1.0 (/mnt/d/Github/FunWithRust/test_lab2_crypto)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.81s

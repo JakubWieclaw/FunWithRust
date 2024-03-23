@@ -1,0 +1,1 @@
+/mnt/d/Github/FunWithRust/test_lab2_crypto/target/debug/test_lab2_crypto: /mnt/d/Github/FunWithRust/test_lab2_crypto/src/database_gen.rs /mnt/d/Github/FunWithRust/test_lab2_crypto/src/main.rs /mnt/d/Github/FunWithRust/test_lab2_crypto/src/structs/pair.rs /mnt/d/Github/FunWithRust/test_lab2_crypto/src/structs.rs
