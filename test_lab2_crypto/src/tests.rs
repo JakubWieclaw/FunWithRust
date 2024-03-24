@@ -63,48 +63,51 @@ pub fn conduct_long_series_test(bbs_vec: &[u8; 20000]) {
     println!();
 }
 
-pub fn runs_test(bbs_vec: &[u8; 20000]) -> SeriesLength {
-    let mut res: SeriesLength = {SeriesLength {one: 0, two: 0, three: 0, four: 0, five: 0, six_and_more: 0}};
+pub fn runs_test(bbs_vec: &[u8; 20000]) -> (SeriesLength, SeriesLength) {
+    let mut res_zeroes: SeriesLength = {SeriesLength {one: 0, two: 0, three: 0, four: 0, five: 0, six_and_more: 0}};
+    let mut res_ones: SeriesLength = {SeriesLength {one: 0, two: 0, three: 0, four: 0, five: 0, six_and_more: 0}};
     let mut temp: u32 = 1;
     for i in 1..bbs_vec.len() {
         if bbs_vec[i] == bbs_vec[i-1] {
             temp += 1;
         }
         else {
-            match temp {
-                1 => res.one += 1,
-                2 => res.two += 1,
-                3 => res.three += 1,
-                4 => res.four += 1,
-                5 => res.five += 1,
-                _ => res.six_and_more += 1,
+            if bbs_vec[i-1] == 0 {
+                match temp {
+                    1 => res_zeroes.one += 1,
+                    2 => res_zeroes.two += 1,
+                    3 => res_zeroes.three += 1,
+                    4 => res_zeroes.four += 1,
+                    5 => res_zeroes.five += 1,
+                    _ => res_zeroes.six_and_more += 1,
+                }
             }
+            else {
+                match temp {
+                    1 => res_ones.one += 1,
+                    2 => res_ones.two += 1,
+                    3 => res_ones.three += 1,
+                    4 => res_ones.four += 1,
+                    5 => res_ones.five += 1,
+                    _ => res_ones.six_and_more += 1,
+                }
+            }
+            
             temp = 1;
         }
     }
 
-    return res;
+    return (res_zeroes, res_ones);
 }
 
 pub fn conduct_runs_test(bbs_vec: &[u8; 20000]) {
     println!("RUNS TEST");
-    let mut success: bool = false;
-    let runs_test_res: SeriesLength = runs_test(bbs_vec);
-    if runs_test_res.one >= 2315 && runs_test_res.one <= 2685 {
-        if runs_test_res.two >= 1114 && runs_test_res.two <= 1386 {
-            if runs_test_res.three >= 527 && runs_test_res.three <= 723 {
-                if runs_test_res.four >= 240 && runs_test_res.four <= 384 {
-                    if runs_test_res.five >= 103 && runs_test_res.five <= 209 {
-                        if runs_test_res.six_and_more >= 103 && runs_test_res.six_and_more <= 209 {
-                            success = true;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    println!("Length 1: {}\nLength 2: {}\nLength 3: {}\nLength 4: {}\nLength 5: {}\nLength 6 or more: {}", runs_test_res.one, runs_test_res.two, runs_test_res.three, runs_test_res.four, runs_test_res.five, runs_test_res.six_and_more);
-    if success {
+    let runs_test_res: (SeriesLength, SeriesLength) = runs_test(bbs_vec);
+    let succes_zeroes = check_single_series_length(&runs_test_res.0);
+    let success_ones = check_single_series_length(&runs_test_res.1);
+    println!("ZEROES\nLength 1: {}\nLength 2: {}\nLength 3: {}\nLength 4: {}\nLength 5: {}\nLength 6 or more: {}", runs_test_res.0.one, runs_test_res.0.two, runs_test_res.0.three, runs_test_res.0.four, runs_test_res.0.five, runs_test_res.0.six_and_more);
+    println!("\nONES\nLength 1: {}\nLength 2: {}\nLength 3: {}\nLength 4: {}\nLength 5: {}\nLength 6 or more: {}", runs_test_res.1.one, runs_test_res.1.two, runs_test_res.1.three, runs_test_res.1.four, runs_test_res.1.five, runs_test_res.1.six_and_more);
+    if succes_zeroes && success_ones{
         println!("SUCCESS");
     }
     else {
@@ -112,4 +115,21 @@ pub fn conduct_runs_test(bbs_vec: &[u8; 20000]) {
     }
 
     println!();
+}
+
+fn check_single_series_length (s: &SeriesLength) -> bool {
+    if s.one >= 2315 && s.one <= 2685 {
+        if s.two >= 1114 && s.two <= 1386 {
+            if s.three >= 527 && s.three <= 723 {
+                if s.four >= 240 && s.four <= 384 {
+                    if s.five >= 103 && s.five <= 209 {
+                        if s.six_and_more >= 103 && s.six_and_more <= 209 {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return false;
 }

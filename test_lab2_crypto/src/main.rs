@@ -36,8 +36,6 @@ fn main() {
         return;
     }
 
-    //let primes_vec = database_gen::eratostenes_generate_vector_of_primes(range_start, range_end);
-    // database_gen::save_vector_as_csv(primes_vec);
 
     let primes_vec =
         algorythm_functions::eratostenes_generate_vector_of_primes(range_start, range_end);
@@ -50,14 +48,6 @@ fn main() {
     println!("p: {p}\nq: {q}\nn: {n}\nx: {x}\n");
 
     let mut x_i = (x * x) % n;
-
-    //let bv_size = 20000;
-    // let mut bitvec = BitVector::new(bv_size);
-    // for _i in 0..bv_size {
-    //     let val = x_i%2;
-    //     bitvec.insert(val as usize);
-    //     x_i = (x_i*x_i)%n;
-    // }
 
     let mut bbs: [u8; 20000] = [0; 20000];
     for i in 0..20000 {
