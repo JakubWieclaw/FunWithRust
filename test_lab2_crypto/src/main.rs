@@ -58,4 +58,5 @@ fn main() {
     tests::conduct_single_bits_test(&bbs);
     tests::conduct_runs_test(&bbs);
     tests::conduct_long_series_test(&bbs);
+    tests::conduct_poker_test(&bbs);
 }
