@@ -1,3 +1,5 @@
+use rand::Rng;
+
 pub fn eratostenes_generate_vector_of_primes(start_of_range: u32, end_of_range: u32) -> Vec<u32> {
     let mut primes: Vec<bool> = vec![true; (end_of_range + 1) as usize];
 
@@ -20,16 +22,17 @@ pub fn eratostenes_generate_vector_of_primes(start_of_range: u32, end_of_range: 
     return res;
 }
 
-pub fn get_x(n: u32, range_start: u32, range_end: u32) -> u32 {
-    for i in range_start..=range_end {
-        if are_these_comprime(i, n) {
-            return i;
+pub fn get_x(n: u128, range_start: u32, range_end: u32) -> u128 {
+    loop {
+        let x = rand::thread_rng().gen_range(range_start..=range_end);
+        if are_these_comprime(x as u128, n) {
+            return x as u128;
         }
     }
-    return 0;
+    //return 0;
 }
 
-fn are_these_comprime(x:u32, n: u32) -> bool {
+fn are_these_comprime(x:u128, n: u128) -> bool {
     let mut x_val = x;
     let mut n_val = n;
     while n_val > 1 && x_val > 1 {
@@ -44,5 +47,5 @@ fn are_these_comprime(x:u32, n: u32) -> bool {
         }
     }
 
-    return false;
+    return x_val == 1 || n_val == 1;
 }

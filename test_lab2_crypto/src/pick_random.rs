@@ -1,7 +1,7 @@
 //use csv::Reader;
 use rand::Rng;
 
-pub fn pick_random_from_vector(v: &Vec<u32>, mod_n: u32, mod_eq: u32) -> u32 {
+pub fn pick_random_from_vector(v: &Vec<u32>, mod_n: u32, mod_eq: u32) -> u128 {
 
     let mut candidates: Vec<u32> = vec![];
 
@@ -12,7 +12,7 @@ pub fn pick_random_from_vector(v: &Vec<u32>, mod_n: u32, mod_eq: u32) -> u32 {
     }
 
     let random_id = rand::thread_rng().gen_range(0..candidates.len());
-    return candidates[random_id];
+    return candidates[random_id] as u128;
 }
 
 // pub fn pick_random_number_from_database(path: &str, size: &u32, mod_n: u32, mod_eq: u32) -> u32 {
