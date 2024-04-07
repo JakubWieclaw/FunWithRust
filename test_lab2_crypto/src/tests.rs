@@ -1,10 +1,10 @@
-use std::collections::btree_map::Range;
+//use std::collections::btree_map::Range;
 
 use crate::structs::series_len::SeriesLength;
-use crate::structs::zeroes_and_ones::Zeroes_and_Ones;
+use crate::structs::zeroes_and_ones::ZeroesAndOnes;
 
-pub fn single_bits_test(bbs_vec: &[u8; 20000]) -> Zeroes_and_Ones {
-    let mut res: Zeroes_and_Ones = { Zeroes_and_Ones { zeroes: 0, ones: 0 } };
+pub fn single_bits_test(bbs_vec: &[u8; 20000]) -> ZeroesAndOnes {
+    let mut res: ZeroesAndOnes = { ZeroesAndOnes { zeroes: 0, ones: 0 } };
     for el in bbs_vec {
         if *el == 0 {
             res.zeroes += 1;
@@ -17,7 +17,7 @@ pub fn single_bits_test(bbs_vec: &[u8; 20000]) -> Zeroes_and_Ones {
 }
 
 pub fn conduct_single_bits_test(bbs_vec: &[u8; 20000]) {
-    let single_bits_test: Zeroes_and_Ones = single_bits_test(bbs_vec);
+    let single_bits_test: ZeroesAndOnes = single_bits_test(bbs_vec);
     println!("SINGLE BITS TEST");
     println!(
         "Zeroes: {}\nOnes: {}",
