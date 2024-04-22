@@ -1,4 +1,0 @@
-1. 4 funkcje, na każdą 3 pliki 1,3 i 10 mb
-2. porównać czas trwania
-3. sprawdzić SAC (porównać różnice XOREM) (tylko dla jednej z funckji skrótu) (dla 1 (wędrującego, średnia) bitu różnicy każdy bit zmienia się z prawdopodobieństwem 1/2)
-4. sprawdzić kolizje (1000 wiadomości, parametr ilości pierwszych bitów)
