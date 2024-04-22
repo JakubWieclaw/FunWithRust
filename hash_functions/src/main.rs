@@ -18,10 +18,10 @@ fn main() {
     let sha3_256_results = hash_functions::test_sha3_256_hash(&one_mb_file, &three_mb_file, &ten_mb_file);
 
     // Test SAC
-    let sac_results = test_sac::test_sac(&one_mb_file);
+    let sac_results = test_sac::test_sac();
 
     // Test collisions
-    let number_of_bits = 16;
+    let number_of_bits = 12;
     let iterations = 1000;
     let collisions = check_collisions::check_collisions(number_of_bits, iterations);
 

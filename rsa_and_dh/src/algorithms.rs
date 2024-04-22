@@ -68,7 +68,7 @@ fn are_these_comprime(x: u128, n: u128) -> bool {
     return x_val == 1 || n_val == 1;
 }
 
-pub fn get_d(v: &Vec<u32>, e: u128, phi: u128) -> u128 {
+pub fn get_d(e: u128, phi: u128) -> u128 {
     let mut d: u128 = 0;
     let mut k: u128 = 1;
     loop {
@@ -78,12 +78,6 @@ pub fn get_d(v: &Vec<u32>, e: u128, phi: u128) -> u128 {
         }
         k += 1;
     }
-    // loop {
-    //     let d = pick_random_from_vector(v);
-    //     if (e * d) % phi == 1 {
-    //         return d;
-    //     }
-    // }
 }
 
 pub fn rsa(range_start: u32, range_end: u32) {
@@ -98,7 +92,7 @@ pub fn rsa(range_start: u32, range_end: u32) {
     let phi = (p-1)*(q-1);
     println!("Generating e and d");
     let e = get_e(&primes_vec, phi); // Public key
-    let d = get_d(&primes_vec, e, phi); // Private key
+    let d = get_d(e, phi); // Private key
     println!("Variables prepared");
     println!("p: {}\nq: {}\nn: {}\nphi: {}\ne: {}\nd: {}", p, q, n, phi, e, d);
 

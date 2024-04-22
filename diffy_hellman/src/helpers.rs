@@ -46,9 +46,9 @@ pub fn get_number_from_range(start: u32, end: u32) -> u128 {
     return rng.gen_range(start..end) as u128;
 }
 
-pub fn count_primitive_root(n: u128) -> u128 {
+pub fn count_primitive_root(primes: &Vec<u32>, n: u128) -> u128 {
     let phi: u128 = n - 1;
-    let primes = eratostenes_generate_vector_of_primes(2, n as u32);
+    //let primes = eratostenes_generate_vector_of_primes(2, n as u32);
     let mut result: u128 = 0;
     for i in 0..primes.len() {
         let mut flag: bool = true;

@@ -28,7 +28,9 @@ fn main() {
 
     let primes = helpers::eratostenes_generate_vector_of_primes(range_start, range_end);
     let n = helpers::pick_random_from_vector(&primes);
-    let g = helpers::count_primitive_root(n);
+    let g = helpers::count_primitive_root(&primes, n);
+    println!("Generated prime number: {}", n);
+    println!("Generated primitive root modulo n: {}", g);
     let mut user_a = user::User::new(n, g, range_start, range_end);
     let mut user_b = user::User::new(n, g, range_start, range_end);
 
