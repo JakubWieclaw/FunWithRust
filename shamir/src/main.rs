@@ -6,7 +6,7 @@ fn main() {
 
     // Generate secret
     //let secret = helpers::generate_secret_message(3);
-    let secret = 954;
+    let secret = helpers::generate_secret_message(3);
 
     // Generate vector of primes
     let primes = helpers::eratostenes_generate_vector_of_primes(1000, 9999);
