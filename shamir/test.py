@@ -1,5 +1,4 @@
 import random
-from math import ceil
 from decimal import Decimal
  
 FIELD_SIZE = 10**5
@@ -49,10 +48,9 @@ def generate_shares(n, m, secret):
     return shares
  
  
-# Driver code
 if __name__ == '__main__':
  
-    t, n = 3, 5
+    t, n = 5, 10
     secret = random.randint(100000, 999999)
     print(f'Original Secret: {secret}')
  
